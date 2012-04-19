@@ -1,0 +1,27 @@
+<%
+import redis
+
+
+#req.write(str(form.getfirst('search')))
+search=str(form.getfirst('search'))
+#search.append('python')
+if search:
+        
+
+
+     req.write("String: ")
+     req.write(search)
+     req.write("<br>")
+     persistent_index=redis.Redis(host="localhost", db=2)
+     output=persistent_index.lrange(search,0,-1)
+     req.write("-----")
+     req.write("<br>")
+     for i in output:
+			%>
+<a href="<%= i %>"> <%= i %> </a><br>
+   
+<%
+else:
+ req.write("no data received")
+%>
+

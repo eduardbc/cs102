@@ -1,0 +1,18 @@
+
+<%
+import cgi
+import redis
+persistent_index=redis.Redis(host="localhost", db=2)
+output1=persistent_index.flushall()
+
+%>
+Deleting index, indexed url and scores: <%= output1 %> <br>
+
+<%
+req.write("-----")
+req.write("<br>")
+%>
+<a href="/search.html">Return</a><br>
+   
+
+

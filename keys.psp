@@ -1,0 +1,14 @@
+
+<%
+import cgi
+import redis
+persistent_index=redis.Redis(host="localhost", db=2)
+output=persistent_index.keys("*")
+req.write("-----")
+req.write("<br>")
+for i in output:
+			%>
+<%= i %><br>
+   
+
+
